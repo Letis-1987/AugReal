@@ -1,6 +1,7 @@
 #include "ARFrameProcessor.h"
 
 #include "AREngine.h"
+#include <thread>
 
 SetPointsPair ARFrameProcessor::match(std::shared_ptr<ARFrame> frame, std::shared_ptr<ARFrame> sample)
 {
@@ -34,7 +35,7 @@ SetPointsPair ARFrameProcessor::match(std::shared_ptr<ARFrame> frame, std::share
         }
     }
 
-    std::cout<<"Good matches: "<<goodMatches.size()<<std::endl; //
+    std::cout<<"Good matches: "<<goodMatches.size()<<" in "<<std::this_thread::get_id()<<" thread"<<std::endl; //
     if (goodMatches.size() > 20) // 20 matches enough?
     {
         for (cv::DMatch& match : goodMatches)
