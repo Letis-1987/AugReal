@@ -1,15 +1,18 @@
 TEMPLATE = app
 CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
+#CONFIG -= app_bundle
+#CONFIG -= qt
 #CONFIG += staticlib
+QT += 3dcore 3drender 3dinput 3dlogic 3dquickextras qml quick 3dquick 3danimation
+QT += multimedia multimediawidgets widgets
 
 SOURCES += main.cpp \
     ARFrame.cpp \
     AREngine.cpp \
     ARFrameProcessor.cpp \
     ARViewer.cpp \
-    ARPlainViewer.cpp
+    ARPlainViewer.cpp \
+    MySurface.cpp
 
 win32 | win64{
     INCLUDEPATH += "D:/opencv-3.2.0MinGW/include/"
@@ -43,4 +46,9 @@ HEADERS += \
     AREngine.h \
     ARFrameProcessor.h \
     ARViewer.h \
-    ARPlainViewer.h
+    ARPlainViewer.h \
+    MySurface.h
+
+DISTFILES += \
+    main.qml \
+    Scene.qml
